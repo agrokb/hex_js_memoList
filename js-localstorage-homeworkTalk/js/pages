@@ -1,0 +1,71 @@
+function goPage(pno, psize) {
+        var itable = document.getElementById("txt-list");
+        var li = itable.getElementsByTagName('li');
+        var num = li.length; //表格所有行數(所有記錄數)
+        var totalPage = 0; //總頁數
+        var pageSize = psize; //每頁顯示行數
+        //總共分幾頁 
+        if (num / pageSize > parseInt(num / pageSize)) {
+            totalPage = parseInt(num / pageSize) + 1;
+        } else {
+            totalPage = parseInt(num / pageSize);
+        }
+        var currentPage = pno; //當前頁數
+        var startRow = (currentPage - 1) * pageSize + 1; //開始顯示的行
+        var endRow = currentPage * pageSize; //結束顯示的行
+        endRow = (endRow > num) ? num : endRow;
+        //遍歷顯示資料實現分頁
+        for (var i = 1; i < (num + 1); i++) {
+            var irow = li[i - 1];
+            if (i >= startRow && i <= endRow) {
+                irow.style.display = "block";
+            } else {
+                irow.style.display = "none";
+            }
+        }
+ 
+        var tempStr ="";
+        if (currentPage > 1) {
+            tempStr += "<a href=\"#stockbacktop\" class=\"a2\" onClick=\"goPage(" + (1) + "," + psize + ")\" class=\"paq-sy\">";
+            tempStr += "<input class=\"homepagea\" type=\"button\" value=\"首頁\"/>";
+            tempStr += "</a>";
+            tempStr += "<a href=\"#stockbacktop\" class=\"a3\" onClick=\"goPage(" + (currentPage - 1) + "," + psize + ")\">";
+            tempStr += "<input class=\"toppages\" type=\"button\" value=\"上一頁\"/>";
+            tempStr += "</a>";
+            tempStr += "<div class=\"somepages\">";
+            tempStr += "<span class=\"s1\">"+currentPage+"</span>";
+            tempStr += "<span class=\"s2\">&nbsp;/&nbsp;</span>";
+            tempStr += "<span class=\"s3\">"+totalPage+"</span>";
+            tempStr += "</div>";
+        } else {
+            tempStr += "<a href=\"#stockbacktop\" class=\"a2\">";
+            tempStr += "<input class=\"homepagea\" type=\"button\" value=\"首頁\"/>";
+            tempStr += "</a>";
+            tempStr += "<a href=\"#stockbacktop\" class=\"a3\">";
+            tempStr += "<input class=\"toppages\" type=\"button\" value=\"上一頁\"/>";
+            tempStr += "</a>";
+            tempStr += "<div class=\"somepages\">";
+            tempStr += "<span class=\"s1\">"+currentPage+"</span>";
+            tempStr += "<span class=\"s2\">&nbsp;/&nbsp;</span>";
+            tempStr += "<span class=\"s3\">"+totalPage+"</span>";
+            tempStr += "</div>";
+        }
+
+        if (currentPage < totalPage) {
+            tempStr += "<a href=\"#stockbacktop\" class=\"a4\" onClick=\"goPage(" + (currentPage + 1) + "," + psize + ")\">";
+            tempStr += "<input class=\"downpages\" type=\"button\" value=\"下一頁\"/>";
+            tempStr += "</a>";
+            tempStr += "<a href=\"#stockbacktop\" class=\"a5\" onClick=\"goPage(" + (totalPage) + "," + psize + ")\">";
+            tempStr += "<input class=\"endpagesz\" type=\"button\" value=\"尾頁\"/>";
+            tempStr += "</a>";
+        } else {
+            tempStr += "<a href=\"#stockbacktop\" class=\"a4\">";
+            tempStr += "<input class=\"downpages\" type=\"button\" value=\"下一頁\"/>";
+            tempStr += "</a>";
+            tempStr += "<a href=\"#stockbacktop\" class=\"a5\">";
+            tempStr += "<input class=\"endpagesz\" type=\"button\" value=\"尾頁\"/>";
+            tempStr += "</a>";
+        }
+        
+        document.getElementById("stockbarcon").innerHTML = tempStr;
+}

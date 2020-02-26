@@ -1,0 +1,37 @@
+
+
+
+
+
+     localStorage.setItem("key-"+num,inputContent);
+     str="<li data-num="+i+">"+inputContent+"</li>";
+     dataList.innerHTML=str;
+
+     ------
+     var inputData    = document.querySelector('.text');
+var sendData     = document.querySelector('.send');
+var dataList     = document.querySelector('.list');
+var listNum     =  document.querySelectorAll('.list').length;
+//get data from form
+var str  ='';
+var data =[];
+var newData = inputData.value;
+//save data in the localstorage
+sendData.addEventListener('click',listData,false);
+//getData
+
+
+function listData(){
+  var getData = localStorage.getItem('html');
+  dataList.innerHTML=getData+;
+
+  for(var i=0;i<listNum;i++){
+     str+="<li data-num="+i+">"+data[i]+"</li>";
+     dataList.innerHTML=str;
+  } 
+  inputData.value='';
+  localStorage.setItem("html",str);
+  str='';
+}
+
+//get data from localstorage
