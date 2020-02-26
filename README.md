@@ -8,4 +8,4 @@
   <li>JavaScript</li>
 </ol>
 <h2>リンク</h2>
-<a href="/">作品</a>
+<a href="https://agrokb.github.io/hex_js_memoList/js-localstorage-homeworkTalk/">作品</a>
