@@ -6,6 +6,7 @@
   <li>CSS</li>
   <li>HTML</li>
   <li>JavaScript</li>
+  <li>LocalStorage</li>
 </ol>
 <h2>リンク</h2>
 <a href="https://agrokb.github.io/hex_js_memoList/js-localstorage-homeworkTalk/">作品</a>
